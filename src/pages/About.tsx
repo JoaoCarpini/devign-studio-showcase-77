@@ -18,10 +18,9 @@ const values = [
 ];
 
 const team = [
-  { name: "Lucas Ferreira", role: "CEO & Full-Stack Developer", initials: "LF" },
-  { name: "Ana Costa", role: "UI/UX Designer", initials: "AC" },
-  { name: "Rafael Santos", role: "Backend Engineer", initials: "RS" },
-  { name: "Marina Oliveira", role: "Project Manager", initials: "MO" },
+  { name: "João Pedro Carpini", role: "Full-Stack Developer & Project Manager", initials: "JC" },
+  { name: "Gabrielle Almeida", role: "UI/UX Designer", initials: "GA" },
+  { name: "Isabely Perez Marques", role: "Front-End Developer & Project Manager", initials: "IM" },
 ];
 
 const About = () => (
@@ -92,7 +91,7 @@ const About = () => (
           title="Quem faz acontecer"
           description="Profissionais especializados e dedicados ao sucesso do seu projeto."
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
           {team.map((t, i) => (
             <motion.div
               key={t.name}
