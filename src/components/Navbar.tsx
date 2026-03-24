@@ -59,7 +59,7 @@ const Navbar = () => {
               onClick={() => setOpen(false)}
               className={cn(
                 "block text-sm font-medium transition-colors",
-                location.pathname === item.path ? "text-accent" : "text-muted-foreground"
+                location.pathname === item.path ? "text-accent" : "text-white/60"
               )}
             >
               {item.label}
