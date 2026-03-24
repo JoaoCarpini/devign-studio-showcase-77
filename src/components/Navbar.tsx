@@ -18,7 +18,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[hsl(232_60%_10%/0.95)] backdrop-blur-lg border-b border-[hsl(245_30%_25%/0.3)]">
       <div className="container flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="flex items-center">
           <img src={logo} alt="Devign Studio" className="h-10 md:h-12 w-auto" />
