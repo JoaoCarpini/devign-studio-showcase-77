@@ -19,7 +19,7 @@ const values = [
 
 const team = [
   { name: "João Pedro Carpini", role: "Full-Stack Developer & Project Manager", initials: "JC" },
-  { name: "Gabrielle Almeida", role: "UI/UX Designer", initials: "GA" },
+  { name: "Gabrielle Almeida", role: "UI/UX Designer & User Experience Specialist", initials: "GA" },
   { name: "Isabely Perez Marques", role: "Front-End Developer & Project Manager", initials: "IM" },
 ];
 
