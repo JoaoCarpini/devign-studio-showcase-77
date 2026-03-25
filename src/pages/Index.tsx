@@ -22,10 +22,10 @@ const services = [
 ];
 
 const stats = [
-  { value: "150+", label: "Projetos entregues" },
-  { value: "98%", label: "Clientes satisfeitos" },
-  { value: "5 anos", label: "De experiência" },
-  { value: "24h", label: "Tempo de resposta" },
+  { value: "Foco em resultados", label: "Projetos pensados para gerar valor real" },
+  { value: "Qualidade acima de volume", label: "Cada projeto tratado com atenção total" },
+  { value: "Tecnologia moderna", label: "Utilizamos as melhores ferramentas do mercado" },
+  { value: "Atendimento próximo", label: "Suporte direto e comunicação rápida" },
 ];
 
 const differentials = [
