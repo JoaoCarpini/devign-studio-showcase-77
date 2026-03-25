@@ -20,8 +20,8 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Devign Studio" className="h-10 md:h-12 w-auto" />
+        <Link to="/" className="font-display text-xl font-bold tracking-tight text-foreground">
+          Devign<span className="text-accent">.</span>Studio
         </Link>
 
         {/* Desktop nav */}

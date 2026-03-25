@@ -4,6 +4,7 @@ import { Code2, Globe, Zap, Layers, ArrowRight, CheckCircle2 } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
+import logo from "@/assets/logo.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -43,7 +44,10 @@ const Index = () => (
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(210_100%_52%/0.15),transparent_60%)]" />
       <div className="container relative section-padding text-center">
         <motion.div initial="hidden" animate="visible" className="max-w-3xl mx-auto">
-          <motion.span variants={fadeUp} custom={0} className="inline-block text-xs font-semibold uppercase tracking-widest text-accent/80 mb-6">
+          <motion.div variants={fadeUp} custom={0} className="flex justify-center mb-8">
+            <img src={logo} alt="Devign Studio" className="h-20 md:h-28 w-auto" />
+          </motion.div>
+          <motion.span variants={fadeUp} custom={0.5} className="inline-block text-xs font-semibold uppercase tracking-widest text-accent/80 mb-6">
             Desenvolvimento & Design Digital
           </motion.span>
           <motion.h1 variants={fadeUp} custom={1} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-primary-foreground leading-[1.1]">
