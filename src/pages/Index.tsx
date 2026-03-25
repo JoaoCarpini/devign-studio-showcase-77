@@ -4,7 +4,7 @@ import { Code2, Globe, Zap, Layers, ArrowRight, CheckCircle2 } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-horizontal.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
