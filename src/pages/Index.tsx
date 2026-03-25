@@ -145,8 +145,8 @@ const Index = () => (
               variants={fadeUp}
               className="text-center"
             >
-              <div className="font-display text-3xl md:text-4xl font-bold text-primary-foreground">{s.value}</div>
-              <div className="mt-2 text-sm text-primary-foreground/50">{s.label}</div>
+              <div className="font-display text-lg md:text-xl font-bold text-primary-foreground">{s.value}</div>
+              <div className="mt-2 text-sm text-primary-foreground/50 leading-relaxed">{s.label}</div>
             </motion.div>
           ))}
         </div>
