@@ -16,8 +16,8 @@ const fadeUp = {
 };
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "contato@devignstudio.com" },
-  { icon: Phone, label: "Telefone", value: "+55 (11) 99999-9999" },
+  { icon: Mail, label: "Email", value: "contato.devignstudio@outlook.com" },
+  { icon: Phone, label: "Telefone", value: "+55 (19) 99705-4074" },
   { icon: MapPin, label: "Localização", value: "São Paulo, SP — Brasil" },
 ];
 
