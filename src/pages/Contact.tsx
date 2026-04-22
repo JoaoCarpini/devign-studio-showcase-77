@@ -22,12 +22,13 @@ const contactInfo = [
 ];
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [message, setMessage] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!message.trim()) return;
     toast.success("Mensagem enviada com sucesso! Entraremos em contato em breve.");
-    setForm({ name: "", email: "", message: "" });
+    setMessage("");
   };
 
   return (
@@ -60,31 +61,13 @@ const Contact = () => {
               <p className="text-muted-foreground mb-8">Responderemos em até 24 horas úteis.</p>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Nome</label>
-                  <Input
-                    placeholder="Seu nome completo"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Email</label>
-                  <Input
-                    type="email"
-                    placeholder="seu@email.com"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    required
-                  />
-                </div>
-                <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Mensagem</label>
                   <Textarea
                     placeholder="Conte sobre seu projeto ou necessidade..."
-                    rows={5}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    rows={6}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    maxLength={2000}
                     required
                   />
                 </div>
