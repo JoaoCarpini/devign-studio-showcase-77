@@ -1,4 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+/* 1. Importação das fontes reais do projeto */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+@font-face {
+  font-family: 'Dexurita';
+  /* O Vite vai entender esse caminho relativo e gerar o link correto no build */
+  src: url('./assets/fonts/Dexurita-Regular.woff2') format('woff2');
+ font-weight: 400; /* Defina como 400 ou normal */
+  font-style: normal;
+  font-display: block; /* 'block' evita o piscar de fontes diferentes, ele segura o texto até a fonte carregar */
+}
+@font-face {
+  font-family: 'C rial';
+  /* O Vite vai entender esse caminho relativo e gerar o link correto no build */
+  src: url('./assets/fonts/CRIALTRIAL.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block; /* 'block' evita o piscar de fontes diferentes, ele segura o texto até a fonte carregar */
+}
+
+@font-face {
+  font-family: 'Denova';
+  src: url('./assets/fonts/DENOVAItalic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
 
 @tailwind base;
 @tailwind components;
@@ -6,49 +31,27 @@
 
 @layer base {
   :root {
-    --background: 230 25% 97%;
-    --foreground: 230 50% 10%;
+    /* 3. Paleta Dark Burgundy & Dark Mode Vibes */
+    --background: 260 30% 4%; /* Quase preto para destacar o grid */
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 230 50% 10%;
+    --card: 260 30% 6%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 230 50% 10%;
-
-    --primary: 232 60% 15%;
+--primary: 217 100% 25%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 230 20% 93%;
-    --secondary-foreground: 232 50% 12%;
+--accent: 195 80% 75%;
+    --accent-foreground: 345 100% 15%;
 
-    --muted: 230 18% 95%;
-    --muted-foreground: 230 12% 45%;
+    --border: 260 20% 15%;
+    --input: 260 20% 15%;
+    
+    --radius: 1rem;
 
-    --accent: 245 58% 58%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 230 15% 90%;
-    --input: 230 15% 90%;
-    --ring: 245 58% 58%;
-
-    --radius: 0.75rem;
-
-    --hero-gradient: linear-gradient(135deg, hsl(232 60% 8%) 0%, hsl(232 55% 16%) 40%, hsl(245 50% 28%) 100%);
-    --card-shadow: 0 1px 3px 0 hsl(232 50% 10% / 0.04), 0 1px 2px -1px hsl(232 50% 10% / 0.04);
-    --card-shadow-hover: 0 10px 25px -5px hsl(232 50% 10% / 0.08), 0 8px 10px -6px hsl(232 50% 10% / 0.04);
-    --glow: 0 0 40px hsl(245 58% 58% / 0.18);
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* 4. Gradientes e Efeitos da Interface Nova */
+    --hero-gradient: radial-gradient(circle at center, #1a1321 0%, #050510 100%);
+--glow: 0 0 60px hsl(217 100% 25% / 0.15);
   }
 }
 
@@ -58,12 +61,33 @@
   }
 
   body {
-    @apply bg-background text-foreground font-body antialiased;
+    /* Uso da Plus Jakarta Sans como padrão */
+    @apply bg-[#050510] text-white font-sans antialiased;
+  }
+  h2, .font-serif {
+    font-family: 'Playfair Display', serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+  .font-sans {
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
+
+  /* Force o uso dela e remova qualquer fallback que o Tailwind esteja forçando */
+.font-dexurita {
+  font-family: 'Dexurita', serif !important;
+  font-weight: 400 !important; /* ISSO AQUI É A CHAVE! */
+}
+
+/* Force o uso dela e remova qualquer fallback que o Tailwind esteja forçando */
+.font-crial {
+  font-family: 'C rial' !important;
+}
+
+.font-denova {
+  font-family: 'Denova', italic !important;
+  font-weight: 400; /* ISSO AQUI É A CHAVE! */
+}
+
 }
 
 @layer utilities {
@@ -71,26 +95,54 @@
     background: var(--hero-gradient);
   }
 
+  /* Efeito de brilho sutil burgundy para o fundo */
+.burgundy-glow { /* Renamed to blue-glow but keeping class for compat */
+background: radial-gradient(circle, rgba(9, 71, 137, 0.15) 0%, transparent 70%);
+    filter: blur(80px);
+  }
+  .text-glow-blue {
+    /* Camada 1: Brilho interno/nítido | Camada 2: Aura média | Camada 3: Brilho expandido */
+    text-shadow: 
+      0 0 10px rgba(59, 130, 246, 0.5),
+      0 0 20px rgba(59, 130, 246, 0.3),
+      0 0 40px rgba(37, 99, 235, 0.2);
+  }
+  /* Grid de pontos técnicos (referência da imagem) */
+  .bg-grid-dots {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
   .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(245 58% 65%) 0%, hsl(260 60% 75%) 100%);
-  }
-
-  .card-hover {
-    box-shadow: var(--card-shadow);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-  }
-
-  .card-hover:hover {
-    box-shadow: var(--card-shadow-hover);
-    transform: translateY(-2px);
-  }
-
-  .glow {
-    box-shadow: var(--glow);
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white/80 to-white/40;
   }
 
   .section-padding {
-    @apply py-20 md:py-28 lg:py-32;
+    @apply py-24 md:py-32;
   }
 }
+/* Brilho maior para o DEVIGN */
+.glow-devign {
+  filter: drop-shadow(0 0 45px rgba(100, 149, 237, 0.45));
+}
+
+/* Sombra azulada para a logo */
+.shadow-blue-logo {
+  filter: drop-shadow(0 15px 40px rgba(0, 50, 200, 0.6));
+}
+
+/* Camada de pontilhados laterais */
+.bg-halftone {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+  /* Máscara que esconde o centro e mostra as laterais */
+  mask-image: linear-gradient(to right, black 0%, transparent 40%, transparent 60%, black 100%);
+  -webkit-mask-image: linear-gradient(to right, black 0%, transparent 40%, transparent 60%, black 100%);
+  opacity: 0.6;
+}
+
+/* Brilho azulado suave nas laterais (para dar a cor da imagem) */
+.side-glow {
+  background: radial-gradient(circle at sides, rgba(29, 78, 216, 0.15) 0%, transparent 70%);
+}
+
