@@ -39,15 +39,6 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
-          {user ? (
-            <Button onClick={signOut} size="sm" variant="outline">
-              <LogOut className="h-4 w-4" /> Sair
-            </Button>
-          ) : (
-            <Button asChild size="sm" variant="outline">
-              <Link to="/auth">Entrar</Link>
-            </Button>
-          )}
           <Button asChild size="sm" variant="hero">
             <Link to="/contato">Solicitar Orçamento</Link>
           </Button>
@@ -75,15 +66,6 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
-          {user ? (
-            <Button onClick={() => { signOut(); setOpen(false); }} size="sm" variant="outline" className="w-full">
-              <LogOut className="h-4 w-4" /> Sair
-            </Button>
-          ) : (
-            <Button asChild size="sm" variant="outline" className="w-full">
-              <Link to="/auth" onClick={() => setOpen(false)}>Entrar</Link>
-            </Button>
-          )}
           <Button asChild size="sm" variant="hero" className="w-full">
             <Link to="/contato" onClick={() => setOpen(false)}>Solicitar Orçamento</Link>
           </Button>
