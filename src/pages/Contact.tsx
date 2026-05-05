@@ -17,8 +17,8 @@ const fadeUp = {
 
 const contactInfo = [
   { icon: Mail, label: "Email", value: "contato.devignstudio@outlook.com" },
-  { icon: Phone, label: "Telefone", value: "+55 (19) 99705-4074" },
-  { icon: MapPin, label: "Localização", value: "São Paulo, SP — Brasil" },
+  { icon: Phone, label: "Telefone", value: "+55 (19) 99226-6955"},
+  { icon: MapPin, label: "Localização", value: "Porto Ferreira, SP — Brasil" },
 ];
 
 const Contact = () => {
