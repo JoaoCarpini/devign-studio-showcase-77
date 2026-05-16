@@ -171,6 +171,7 @@ const Contact = () => {
                     onChange={(e) => setObjective(e.target.value)}
                     maxLength={500}
                     required
+                    className="focus:placeholder:text-transparent"
                   />
                 </fieldset>
 
