@@ -48,8 +48,8 @@ const Footer = () => (
         <div>
           <h4 className="font-display font-semibold mb-4 text-sm uppercase tracking-wider text-primary-foreground/40">Contato</h4>
           <ul className="space-y-3 text-sm text-primary-foreground/70">
-            <li>contato.devignstudio@outlook.com</li>
-            <li>+55 (19) 99705-4074</li>
+            <li className="whitespace-nowrap">contato.devignstudio@outlook.com</li>
+            <li>+55 (19) 99226-6955</li>
             <li>São Paulo, SP — Brasil</li>
           </ul>
         </div>

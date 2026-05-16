@@ -133,7 +133,13 @@ const Contact = () => {
                 </div>
                 <div className="min-w-0">
                   <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{c.label}</span>
-                  <p className="text-foreground font-medium mt-0.5 text-sm break-words">{c.value}</p>
+                  <p className="text-foreground font-medium mt-0.5 text-sm">
+                    {c.label === "Email" ? (
+                      <span className="whitespace-nowrap">{c.value}</span>
+                    ) : (
+                      c.value
+                    )}
+                  </p>
                 </div>
               </motion.div>
             ))}

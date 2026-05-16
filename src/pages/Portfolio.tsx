@@ -21,8 +21,8 @@ const fadeUp = {
   }),
 };
 
-const pages = Array.from({ length: 18 }, (_, i) =>
-  `/portfolio/page-${String(i + 1).padStart(2, "0")}.jpg`
+const pages = Array.from({ length: 17 }, (_, i) =>
+  `/portfolio/${i + 1}.jpg`
 );
 
 const Portfolio = () => {
