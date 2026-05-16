@@ -114,15 +114,50 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Form + Info */}
+      {/* Contact info cards */}
+      <section className="pt-16 md:pt-20 bg-background">
+        <div className="container">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {contactInfo.map((c, i) => (
+              <motion.div
+                key={c.label}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={i}
+                variants={fadeUp}
+                className="flex items-start gap-4 p-5 rounded-xl border border-border bg-card hover:border-accent/40 transition-colors"
+              >
+                <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                  <c.icon className="h-5 w-5 text-accent" />
+                </div>
+                <div className="min-w-0">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{c.label}</span>
+                  <p className="text-foreground font-medium mt-0.5 text-sm break-words">{c.value}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Form */}
       <section className="section-padding bg-background">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 max-w-6xl mx-auto">
-            {/* Form */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="lg:col-span-3">
-              <h2 className="font-display text-2xl font-bold text-foreground mb-2">Solicite um pré-orçamento</h2>
-              <p className="text-muted-foreground mb-8">Leva menos de 2 minutos. Responderemos em até 24 horas úteis.</p>
+          <div className="max-w-3xl mx-auto">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-10">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">Solicite um pré-orçamento</h2>
+              <p className="text-muted-foreground">Leva menos de 2 minutos. Responderemos em até 24 horas úteis.</p>
+            </motion.div>
 
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={1}
+              variants={fadeUp}
+              className="bg-card border border-border rounded-2xl p-6 md:p-10 shadow-sm"
+            >
               <form onSubmit={handleSubmit} className="space-y-8">
                 {/* 1. Identificação */}
                 <fieldset className="space-y-4">
@@ -139,7 +174,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <Label htmlFor="link" className="mb-1.5 block">Instagram ou site atual</Label>
-                    <Input id="link" placeholder="@suaempresa ou https://..." value={link} onChange={(e) => setLink(e.target.value)} maxLength={200} />
+                    <Input id="link" placeholder="@suaempresa ou https://..." value={link} onChange={(e) => setLink(e.target.value)} maxLength={200} className="focus:placeholder:text-transparent" />
                   </div>
                 </fieldset>
 
@@ -171,6 +206,7 @@ const Contact = () => {
                     onChange={(e) => setObjective(e.target.value)}
                     maxLength={500}
                     required
+                    className="focus:placeholder:text-transparent"
                   />
                 </fieldset>
 
@@ -217,33 +253,14 @@ const Contact = () => {
               </form>
             </motion.div>
 
-            {/* Contact info + WhatsApp */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={1} variants={fadeUp} className="lg:col-span-2 space-y-8">
-              <div>
-                <h2 className="font-display text-2xl font-bold text-foreground mb-2">Informações de contato</h2>
-                <p className="text-muted-foreground mb-8">Prefere outro canal? Estamos disponíveis onde você precisar.</p>
-              </div>
-
-              <div className="space-y-6">
-                {contactInfo.map((c) => (
-                  <div key={c.label} className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                      <c.icon className="h-5 w-5 text-accent" />
-                    </div>
-                    <div>
-                      <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{c.label}</span>
-                      <p className="text-foreground font-medium mt-0.5">{c.value}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* WhatsApp CTA */}
+            {/* WhatsApp CTA */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={2} variants={fadeUp} className="mt-8 text-center">
+              <p className="text-sm text-muted-foreground mb-3">Prefere conversar agora mesmo?</p>
               <a
                 href="https://wa.me/5519997054074?text=Olá! Gostaria de solicitar um orçamento."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 w-full bg-[hsl(142,70%,45%)] hover:bg-[hsl(142,70%,40%)] text-primary-foreground rounded-lg px-6 py-4 transition-colors"
+                className="inline-flex items-center justify-center gap-3 bg-[hsl(142,70%,45%)] hover:bg-[hsl(142,70%,40%)] text-primary-foreground rounded-lg px-8 py-4 transition-colors"
               >
                 <MessageCircle className="h-5 w-5 flex-shrink-0" />
                 <span className="font-display font-semibold text-base">Fale pelo WhatsApp</span>
@@ -252,6 +269,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
     </Layout>
   );
 };
