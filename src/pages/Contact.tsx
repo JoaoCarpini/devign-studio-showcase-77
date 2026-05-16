@@ -139,7 +139,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <Label htmlFor="link" className="mb-1.5 block">Instagram ou site atual</Label>
-                    <Input id="link" placeholder="@suaempresa ou https://..." value={link} onChange={(e) => setLink(e.target.value)} maxLength={200} />
+                    <Input id="link" placeholder="@suaempresa ou https://..." value={link} onChange={(e) => setLink(e.target.value)} maxLength={200} className="focus:placeholder:text-transparent" />
                   </div>
                 </fieldset>
 
