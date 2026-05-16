@@ -100,16 +100,13 @@ const Contact = () => {
 
               {/* WhatsApp CTA */}
               <a
-                href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento."
+                href="https://wa.me/5519997054074?text=Olá! Gostaria de solicitar um orçamento."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 bg-[hsl(142,70%,45%)] hover:bg-[hsl(142,70%,40%)] text-primary-foreground rounded-xl p-5 transition-colors"
+                className="flex items-center justify-center gap-3 w-full bg-[hsl(142,70%,45%)] hover:bg-[hsl(142,70%,40%)] text-primary-foreground rounded-lg px-6 py-4 transition-colors"
               >
-                <MessageCircle className="h-7 w-7 flex-shrink-0" />
-                <div>
-                  <span className="font-display font-semibold text-lg">Fale pelo WhatsApp</span>
-                  <p className="text-sm opacity-80">Atendimento rápido e personalizado</p>
-                </div>
+                <MessageCircle className="h-5 w-5 flex-shrink-0" />
+                <span className="font-display font-semibold text-base">Fale pelo WhatsApp</span>
               </a>
             </motion.div>
           </div>
