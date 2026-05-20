@@ -28,6 +28,9 @@ const schema = z.object({
   tags: z.string().max(200),
 });
 
+const getErrorMessage = (err: unknown) =>
+  err instanceof Error ? err.message : "Não foi possível salvar o projeto.";
+
 interface Props {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -104,8 +107,8 @@ const ProjectFormDialog = ({ open, onOpenChange, onSaved, initial }: Props) => {
       }
       onSaved();
       onOpenChange(false);
-    } catch (err: any) {
-      toast({ title: "Erro", description: err.message, variant: "destructive" });
+    } catch (err: unknown) {
+      toast({ title: "Erro", description: getErrorMessage(err), variant: "destructive" });
     } finally {
       setSaving(false);
     }

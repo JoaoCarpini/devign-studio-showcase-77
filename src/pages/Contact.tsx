@@ -26,20 +26,27 @@ const contactInfo = [
 
 const serviceOptions = [
   { id: "identidade", label: "Identidade Visual do zero (Logo, cores, manual)" },
-  { id: "landing", label: "Landing Page / Site de Alta Performance" },
-  { id: "completo", label: "Pacote Completo (Marca + Presença Digital)" },
+  { id: "site", label: "Site institucional profissional" },
+  { id: "landing", label: "Landing Page de alta conversão" },
+  { id: "api", label: "Desenvolvimento de APIs e integrações" },
+  { id: "automacoes", label: "Automações de processos e fluxos internos" },
+  { id: "sistema", label: "Sistema personalizado sob medida" },
+  { id: "completo", label: "Solução integrada de marca e presença digital" },
+  { id: "consultoria", label: "Ainda não sei exatamente, preciso de orientação" },
 ];
 
-const budgetOptions = [
-  { id: "1500-3000", label: "R$ 1.500 a R$ 3.000 — Ideal para Identidade Visual Essencial" },
-  { id: "3000-6000", label: "R$ 3.000 a R$ 6.000 — Ideal para Identidade + Landing Page Express" },
-  { id: "6000+", label: "Acima de R$ 6.000 — Projetos robustos, automações e branding completo" },
-  { id: "consultoria", label: "Ainda não tenho ideia / Gostaria de uma consultoria (mínimo para sites: R$ 2.979,90)" },
+const priorityOptions = [
+  { id: "sem-urgencia", label: "Projeto sem urgência imediata" },
+  { id: "proximas-semanas", label: "Quero iniciar nas próximas semanas" },
+  { id: "prioridade", label: "Tenho urgência e quero prioridade" },
+  { id: "quanto-antes", label: "Preciso de uma solução o quanto antes" },
 ];
 
-const deadlineOptions = [
-  { id: "urgente", label: "Tenho pressa (menos de 15 dias)" },
-  { id: "padrao", label: "Prazo padrão do estúdio (conforme briefing)" },
+const contactPreferenceOptions = [
+  { id: "whatsapp", label: "WhatsApp" },
+  { id: "email", label: "E-mail" },
+  { id: "reuniao-online", label: "Reunião online" },
+  { id: "tanto-faz", label: "Não tenho preferência de contato" },
 ];
 
 const Contact = () => {
@@ -48,8 +55,8 @@ const Contact = () => {
   const [link, setLink] = useState("");
   const [services, setServices] = useState<string[]>([]);
   const [objective, setObjective] = useState("");
-  const [budget, setBudget] = useState("");
-  const [deadline, setDeadline] = useState("");
+  const [priority, setPriority] = useState("");
+  const [contactPreference, setContactPreference] = useState("");
 
   const toggleService = (id: string) => {
     setServices((prev) =>
@@ -59,7 +66,7 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !objective.trim() || !budget || !deadline || services.length === 0) {
+    if (!name.trim() || !objective.trim() || !priority || !contactPreference || services.length === 0) {
       toast.error("Por favor preencha os campos obrigatórios.");
       return;
     }
@@ -68,11 +75,11 @@ const Contact = () => {
       .map((s) => serviceOptions.find((o) => o.id === s)?.label)
       .filter(Boolean)
       .join(", ");
-    const budgetText = budgetOptions.find((b) => b.id === budget)?.label ?? "";
-    const deadlineText = deadlineOptions.find((d) => d.id === deadline)?.label ?? "";
+    const priorityText = priorityOptions.find((item) => item.id === priority)?.label ?? "";
+    const contactPreferenceText = contactPreferenceOptions.find((item) => item.id === contactPreference)?.label ?? "";
 
     const msg = [
-      `*Solicitação de Orçamento — Devign Studio*`,
+      `*Solicitação de Projeto — Devign Studio*`,
       ``,
       `*Nome:* ${name}`,
       company && `*Empresa:* ${company}`,
@@ -82,16 +89,16 @@ const Contact = () => {
       ``,
       `*Objetivo principal:* ${objective}`,
       ``,
-      `*Faixa de investimento:* ${budgetText}`,
+      `*Nível de prioridade:* ${priorityText}`,
       ``,
-      `*Prazo desejado:* ${deadlineText}`,
+      `*Preferência de contato:* ${contactPreferenceText}`,
     ]
       .filter(Boolean)
       .join("\n");
 
     const url = `https://wa.me/5519997054074?text=${encodeURIComponent(msg)}`;
     window.open(url, "_blank", "noopener,noreferrer");
-    toast.success("Pré-orçamento enviado! Continue a conversa pelo WhatsApp.");
+    toast.success("Solicitação enviada! Continue a conversa pelo WhatsApp.");
   };
 
   return (
@@ -108,7 +115,7 @@ const Contact = () => {
               Vamos conversar sobre seu projeto?
             </motion.h1>
             <motion.p variants={fadeUp} custom={2} className="mt-6 text-lg text-primary-foreground/60 max-w-xl mx-auto">
-              Preencha o pré-orçamento abaixo para alinharmos expectativas e iniciarmos seu projeto com clareza.
+              Preencha o briefing abaixo para alinharmos expectativas e iniciarmos seu projeto com clareza.
             </motion.p>
           </motion.div>
         </div>
@@ -152,7 +159,7 @@ const Contact = () => {
         <div className="container">
           <div className="max-w-3xl mx-auto">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-10">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">Solicite um pré-orçamento</h2>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">Solicite uma análise do projeto</h2>
               <p className="text-muted-foreground">Leva menos de 2 minutos. Responderemos em até 24 horas úteis.</p>
             </motion.div>
 
@@ -216,37 +223,40 @@ const Contact = () => {
                   />
                 </fieldset>
 
-                {/* 4. Orçamento */}
+                {/* 4. Nível de Prioridade */}
                 <fieldset>
-                  <legend className="text-sm font-semibold uppercase tracking-wider text-accent mb-2">4. Faixa de investimento *</legend>
+                  <legend className="text-sm font-semibold uppercase tracking-wider text-accent mb-2">4. Nível de Prioridade *</legend>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Para alinharmos expectativas e entregarmos a melhor tecnologia disponível (React/Tailwind), em qual faixa sua empresa se encontra hoje?
+                    Selecione o nível de urgência do seu projeto para alinharmos planejamento, disponibilidade e execução.
                   </p>
-                  <RadioGroup value={budget} onValueChange={setBudget} className="space-y-2">
-                    {budgetOptions.map((opt) => (
+                  <RadioGroup value={priority} onValueChange={setPriority} className="space-y-2">
+                    {priorityOptions.map((opt) => (
                       <label
                         key={opt.id}
-                        htmlFor={`budget-${opt.id}`}
+                        htmlFor={`priority-${opt.id}`}
                         className="flex items-start gap-3 p-3 rounded-lg border border-border hover:border-accent/50 hover:bg-accent/5 cursor-pointer transition-colors"
                       >
-                        <RadioGroupItem value={opt.id} id={`budget-${opt.id}`} className="mt-0.5" />
+                        <RadioGroupItem value={opt.id} id={`priority-${opt.id}`} className="mt-0.5" />
                         <span className="text-sm text-foreground leading-snug">{opt.label}</span>
                       </label>
                     ))}
                   </RadioGroup>
                 </fieldset>
 
-                {/* 5. Prazo */}
+                {/* 5. Preferência de Contato */}
                 <fieldset>
-                  <legend className="text-sm font-semibold uppercase tracking-wider text-accent mb-3">5. Prazo desejado *</legend>
-                  <RadioGroup value={deadline} onValueChange={setDeadline} className="space-y-2">
-                    {deadlineOptions.map((opt) => (
+                  <legend className="text-sm font-semibold uppercase tracking-wider text-accent mb-2">5. Como prefere o contato? *</legend>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Escolha a melhor forma para iniciarmos o atendimento.
+                  </p>
+                  <RadioGroup value={contactPreference} onValueChange={setContactPreference} className="space-y-2">
+                    {contactPreferenceOptions.map((opt) => (
                       <label
                         key={opt.id}
-                        htmlFor={`deadline-${opt.id}`}
+                        htmlFor={`contact-preference-${opt.id}`}
                         className="flex items-start gap-3 p-3 rounded-lg border border-border hover:border-accent/50 hover:bg-accent/5 cursor-pointer transition-colors"
                       >
-                        <RadioGroupItem value={opt.id} id={`deadline-${opt.id}`} className="mt-0.5" />
+                        <RadioGroupItem value={opt.id} id={`contact-preference-${opt.id}`} className="mt-0.5" />
                         <span className="text-sm text-foreground leading-snug">{opt.label}</span>
                       </label>
                     ))}
@@ -254,7 +264,7 @@ const Contact = () => {
                 </fieldset>
 
                 <Button type="submit" size="lg" variant="hero" className="w-full">
-                  Enviar pré-orçamento <Send className="ml-2 h-4 w-4" />
+                  Enviar solicitação <Send className="ml-2 h-4 w-4" />
                 </Button>
               </form>
             </motion.div>

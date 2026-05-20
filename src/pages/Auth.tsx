@@ -14,6 +14,9 @@ const schema = z.object({
   password: z.string().min(6, "Mínimo 6 caracteres").max(72),
 });
 
+const getErrorMessage = (err: unknown) =>
+  err instanceof Error ? err.message : "Não foi possível concluir a operação.";
+
 const Auth = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -51,8 +54,8 @@ const Auth = () => {
         if (error) throw error;
         navigate("/portfolio");
       }
-    } catch (err: any) {
-      toast({ title: "Erro", description: err.message, variant: "destructive" });
+    } catch (err: unknown) {
+      toast({ title: "Erro", description: getErrorMessage(err), variant: "destructive" });
     } finally {
       setLoading(false);
     }

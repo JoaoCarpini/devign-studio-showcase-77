@@ -23,6 +23,12 @@ const team = [
   { name: "Isabely Perez Marques", role: "Front-End Developer & Project Manager", initials: "IM" },
 ];
 
+const storyParagraphs = [
+  "A Devign Studio nasceu em 2026 com o propósito de unir design moderno, tecnologia e inovação para criar soluções digitais inteligentes.",
+  "Somos um estúdio focado no desenvolvimento de sistemas, aplicações web, automações e experiências digitais que ajudam empresas a crescer de forma mais eficiente e profissional.",
+  "Acreditamos que tecnologia bem aplicada é uma das maiores vantagens competitivas que um negócio pode ter. Por isso, cada projeto é desenvolvido com foco em performance, experiência do usuário, organização e resultado.",
+];
+
 const About = () => (
   <Layout>
     {/* Hero */}
@@ -48,12 +54,9 @@ const About = () => (
       <div className="container max-w-3xl mx-auto">
         <SectionHeading label="Nossa História" title="De uma ideia a uma referência em tecnologia" />
         <div className="prose prose-lg max-w-none text-muted-foreground space-y-6 text-center">
-          <p>
-            Fundada em 2020, a Devign Studio nasceu da vontade de unir design sofisticado com engenharia de software de ponta. Começamos como um pequeno estúdio e, em poucos anos, nos tornamos parceiros de empresas de diversos segmentos.
-          </p>
-          <p>
-            Acreditamos que tecnologia bem aplicada é a maior vantagem competitiva que um negócio pode ter. Por isso, cada projeto que entregamos é construído com código limpo, design centrado no usuário e estratégia de conversão.
-          </p>
+          {storyParagraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
       </div>
     </section>

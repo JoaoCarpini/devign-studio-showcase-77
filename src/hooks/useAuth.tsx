@@ -19,40 +19,52 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, newSession) => {
+    let isMounted = true;
+
+    const updateSession = async (newSession: Session | null) => {
+      if (!isMounted) return;
       setSession(newSession);
       setUser(newSession?.user ?? null);
-      if (newSession?.user) {
-        setTimeout(() => {
-          supabase
-            .from("user_roles")
-            .select("role")
-            .eq("user_id", newSession.user.id)
-            .eq("role", "admin")
-            .maybeSingle()
-            .then(({ data }) => setIsAdmin(!!data));
-        }, 0);
-      } else {
+
+      if (!newSession?.user) {
         setIsAdmin(false);
+        return;
       }
+
+      const { data } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", newSession.user.id)
+        .eq("role", "admin")
+        .maybeSingle();
+
+      if (isMounted) {
+        setIsAdmin(!!data);
+      }
+    };
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, newSession) => {
+      setTimeout(() => {
+        void updateSession(newSession);
+      }, 0);
     });
 
     supabase.auth.getSession().then(({ data: { session: existing } }) => {
-      setSession(existing);
-      setUser(existing?.user ?? null);
-      if (existing?.user) {
-        supabase
-          .from("user_roles")
-          .select("role")
-          .eq("user_id", existing.user.id)
-          .eq("role", "admin")
-          .maybeSingle()
-          .then(({ data }) => setIsAdmin(!!data));
+      void updateSession(existing).finally(() => {
+        if (isMounted) {
+          setLoading(false);
+        }
+      });
+    }).catch(() => {
+      if (isMounted) {
+        setLoading(false);
       }
-      setLoading(false);
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      isMounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   const signOut = async () => {
