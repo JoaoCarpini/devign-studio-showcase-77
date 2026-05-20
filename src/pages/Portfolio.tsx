@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Download, Expand, X } from "lucide-react";
-=======
-import { motion } from "framer-motion";
-import { Download, ArrowRight } from "lucide-react";
->>>>>>> 4f8b5aa512ff8b5d8bd6eb4e86afa5a402a40035
 import { Link } from "react-router-dom";
 import Autoplay from "embla-carousel-autoplay";
 import Layout from "@/components/Layout";
@@ -31,7 +26,6 @@ const pages = Array.from({ length: 17 }, (_, i) =>
   `/portfolio/${i + 1}.jpg`
 );
 
-<<<<<<< HEAD
 const portfolioView: "deck" | "carousel" = "carousel";
 
 const getPageLabel = (index: number) =>
@@ -264,8 +258,6 @@ const PortfolioDeck = () => {
   );
 };
 
-=======
->>>>>>> 4f8b5aa512ff8b5d8bd6eb4e86afa5a402a40035
 const Portfolio = () => {
   return (
     <Layout>
@@ -300,58 +292,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-<<<<<<< HEAD
       {portfolioView === "deck" ? <PortfolioDeck /> : <PortfolioCarousel />}
-=======
-      {/* Carousel */}
-      <section className="section-padding bg-background">
-        <div className="container max-w-5xl">
-          <Carousel
-            opts={{ loop: true, align: "center" }}
-            plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]}
-            className="relative"
-          >
-            <CarouselContent>
-              {pages.map((src, i) => (
-                <CarouselItem key={src}>
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.97 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="rounded-2xl overflow-hidden border border-border shadow-2xl bg-card"
-                  >
-                    <img
-                      src={src}
-                      alt={`Página ${i + 1} do portfólio Devign Studio`}
-                      className="w-full h-auto block"
-                      loading={i < 2 ? "eager" : "lazy"}
-                    />
-                  </motion.div>
-                  <p className="mt-4 text-center text-sm text-muted-foreground">
-                    {i + 1} / {pages.length}
-                  </p>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-4 lg:-left-12" />
-            <CarouselNext className="hidden md:flex -right-4 lg:-right-12" />
-          </Carousel>
-
-          <div className="mt-10 flex justify-center">
-            <Button asChild variant="outline" size="lg">
-              <a
-                href="/portfolio/Portfolio_Devign.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Download className="h-4 w-4" /> Baixar portfólio em PDF
-              </a>
-            </Button>
-          </div>
-        </div>
-      </section>
->>>>>>> 4f8b5aa512ff8b5d8bd6eb4e86afa5a402a40035
 
       {/* CTA */}
       <section className="section-padding bg-card border-t border-border">
