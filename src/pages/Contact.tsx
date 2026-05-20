@@ -46,7 +46,7 @@ const contactPreferenceOptions = [
   { id: "whatsapp", label: "WhatsApp" },
   { id: "email", label: "E-mail" },
   { id: "reuniao-online", label: "Reunião online" },
-  { id: "tanto-faz", label: "Não tenho preferência de contato" },
+  { id: "tanto-faz", label: "Não tenho preferência de contato"" },
 ];
 
 const Contact = () => {
