@@ -1,0 +1,160 @@
+/* Importação das fontes reais do projeto */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+@font-face {
+  font-family: 'Dexurita';
+  src: url('./assets/fonts/Dexurita-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: 'C rial';
+  src: url('./assets/fonts/CRIALTRIAL.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Denova';
+  src: url('./assets/fonts/DENOVAItalic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 260 30% 4%;
+    --foreground: 0 0% 100%;
+
+    --card: 260 30% 6%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 260 30% 6%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 217 100% 25%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 25% 14%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 25% 14%;
+    --muted-foreground: 215 18% 68%;
+
+    --accent: 215 80% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 217 100% 30%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 260 20% 15%;
+    --input: 260 20% 15%;
+    --ring: 215 80% 55%;
+    
+    --radius: 1rem;
+
+    --hero-gradient: radial-gradient(circle at center, #1a1321 0%, #050510 100%);
+    --glow: 0 0 60px hsl(217 100% 25% / 0.15);
+
+    --sidebar-background: 260 30% 6%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 217 100% 25%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 25% 14%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 260 20% 15%;
+    --sidebar-ring: 215 80% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-[#050510] text-white font-sans antialiased;
+  }
+  h2, .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-sans {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+.font-dexurita {
+  font-family: 'Dexurita', serif !important;
+  font-weight: 400 !important;
+}
+
+.font-crial {
+  font-family: 'C rial' !important;
+}
+
+.font-denova {
+  font-family: 'Denova', italic !important;
+  font-weight: 400;
+}
+
+}
+
+@layer utilities {
+  .hero-gradient {
+    background: var(--hero-gradient);
+  }
+
+  .burgundy-glow {
+    background: radial-gradient(circle, rgba(9, 71, 137, 0.15) 0%, transparent 70%);
+    filter: blur(80px);
+  }
+  .text-glow-blue {
+    text-shadow: 
+      0 0 10px rgba(59, 130, 246, 0.5),
+      0 0 20px rgba(59, 130, 246, 0.3),
+      0 0 40px rgba(37, 99, 235, 0.2);
+  }
+  .bg-grid-dots {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white/80 to-white/40;
+  }
+
+  .section-padding {
+    @apply py-24 md:py-32;
+  }
+}
+/* Brilho maior para o DEVIGN */
+.glow-devign {
+  filter: drop-shadow(0 0 45px rgba(100, 149, 237, 0.45));
+}
+
+/* Sombra azulada para a logo */
+.shadow-blue-logo {
+  filter: drop-shadow(0 15px 40px rgba(0, 50, 200, 0.6));
+}
+
+/* Camada de pontilhados laterais */
+.bg-halftone {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+  /* Máscara que esconde o centro e mostra as laterais */
+  mask-image: linear-gradient(to right, black 0%, transparent 40%, transparent 60%, black 100%);
+  -webkit-mask-image: linear-gradient(to right, black 0%, transparent 40%, transparent 60%, black 100%);
+  opacity: 0.6;
+}
+
+/* Brilho azulado suave nas laterais (para dar a cor da imagem) */
+.side-glow {
+  background: radial-gradient(circle at sides, rgba(29, 78, 216, 0.15) 0%, transparent 70%);
+}
+
